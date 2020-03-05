@@ -1,0 +1,11 @@
+bin/windows/zookeeper-server-start.bat config/zookeeper.properties
+
+bin/windows/kafka-server-start.bat config/server.properties
+
+bin/windows/kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic message
+bin/windows/kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic user
+
+bin/windows/kafka-topics.bat --list --bootstrap-server localhost:9092
+
+bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic message --from-beginning
+bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic user --from-beginning
