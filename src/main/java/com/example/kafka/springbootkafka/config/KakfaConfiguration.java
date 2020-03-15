@@ -2,6 +2,7 @@ package com.example.kafka.springbootkafka.config;
 
 
 import com.example.kafka.springbootkafka.model.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -40,6 +41,7 @@ public class KakfaConfiguration<C> {
     @Bean
     public ConsumerFactory<String, C> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "0");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
